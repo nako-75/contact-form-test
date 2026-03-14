@@ -1,0 +1,36 @@
+body {
+    background-color: #ffffff;
+    color: #a39389;
+    margin: 0;
+    padding-top: 100px;
+    text-align: center;
+}
+
+.header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.header__inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header__logo {
+    text-decoration: none;
+    color: #8b7969;
+    font-size: 32px;
+    font-family: 'Inika', serif;
+}
+
+.main {
+    padding-top: 80px;
+}
