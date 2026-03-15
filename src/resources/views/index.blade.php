@@ -11,6 +11,22 @@
         <h2>Contact</h2>
     </div>
 
+    @if ($errors->any())
+    <div class="form__error-summary">
+        <ul>
+            @foreach ($errors->all() as $error)
+                @if (trim($error) !== '')
+                    <li>{{ $error }}</li>
+                @endif
+            @endforeach
+
+            @if ($errors->has('tel_1') || $errors->has('tel_2') || $errors->has('tel_3'))
+                <li>電話番号をそれぞれ5桁以内の半角数字で入力してください</li>
+            @endif
+        </ul>
+    </div>
+    @endif
+
     <form class="form" action="/confirm" method="post">
         @csrf
     {{-- 名前 --}}
@@ -20,8 +36,8 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="text" name="first_name" placeholder="例：山田" value="{{ old('first_name') }}" />
-                    <input type="text" name="last_name" placeholder="例：太郎" value="{{ old('last_name') }}" />
+                    <input type="text" name="last_name" placeholder="例：山田" value="{{ old('last_name') }}" />
+                    <input type="text" name="first_name" placeholder="例：太郎" value="{{ old('first_name') }}" />
                 </div>
             </div>
         </div>
@@ -33,11 +49,11 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--radio">
-                    <input type="radio" name="gender" id="male" value="1" checked>
+                    <input type="radio" name="gender" id="male" value="1" {{ old('gender','1') == '1' ? 'checked' : ''}}>
                     <label for="male">男性</label>
-                    <input type="radio" name="gender" id="female" value="2">
+                    <input type="radio" name="gender" id="female" value="2" {{ old('gender') == '2' ? 'checked' : '' }}>
                     <label for="female">女性</label>
-                    <input type="radio" name="gender" id="other" value="3">
+                    <input type="radio" name="gender" id="other" value="3" {{ old('gender') == '3' ? 'checked' : '' }}>
                     <label for="other">その他</label>
                 </div>
             </div>
@@ -78,7 +94,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="text" name="address" placeholder="例：東京都渋谷区千駄ヶ谷1−2−3" value="{{ old('address') }}" />
+                    <input type="text" name="address" placeholder="例：東京都渋谷区千駄ヶ谷1-2-3" value="{{ old('address') }}" />
                 </div>
             </div>
         </div>
@@ -102,13 +118,13 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--select">
-                    <select name="content_type">
-                        <option value="" selected disabled>選択してください</option>
-                        <option value="1">商品のお届けについて</option>
-                        <option value="2">商品の交換について</option>
-                        <option value="3">商品トラブル</option>
-                        <option value="4">ショップへのお問い合わせ</option>
-                        <option value="5">その他</option>
+                    <select name="category_id">
+                        <option value="" {{ old('category_id') == '' ? 'selected' : '' }} disabled>選択してください</option>
+                        <option value="1" {{ old('category_id') == '1' ? 'selected' : '' }}>商品のお届けについて</option>
+                        <option value="2" {{ old('category_id') == '2' ? 'selected' : '' }}>商品の交換について</option>
+                        <option value="3" {{ old('category_id') == '3' ? 'selected' : '' }}>商品トラブル</option>
+                        <option value="4" {{ old('category_id') == '4' ? 'selected' : '' }}>ショップへのお問い合わせ</option>
+                        <option value="5" {{ old('category_id') == '5' ? 'selected' : '' }}>その他</option>
                     </select>
                 </div>
             </div>
@@ -121,7 +137,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--textarea">
-                    <textarea name='content' placeholder="お問い合わせ内容をご記載ください">{{ old('content') }}</textarea>
+                    <textarea name='detail' placeholder="お問い合わせ内容をご記載ください">{{ old('detail') }}</textarea>
                 </div>
             </div>
         </div>

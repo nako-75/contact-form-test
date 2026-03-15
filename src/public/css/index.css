@@ -2,10 +2,21 @@ input,textarea,select {
     background-color: #f4f4f4;
     border: none;
     padding: 10px 15px;
-    color: #b5b5b5;
+    color: #333333;
     width: 100%;
     box-sizing: border-box;
     font-family: sans-serif;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #b5b5b5;
+    opacity: 1;
+}
+
+select:invalid,
+select:has(option[value=""]:checked) {
+    color: #b5b5b5;
 }
 
 input::placeholder,
@@ -19,16 +30,17 @@ textarea::placeholder {
     font-weight: 400;
     color: #8b7969;
     letter-spacing: 3px;
-    font-size: 24px;
+    font-size: 28px;
+    letter-spacing: -0.02em;
     text-align: center;
-    margin: 40px 0;
+    margin-top: 0;
 }
 
-.contact-form__content {
+.contact-form__content { 
     width: 80%;
     margin: 0 auto;
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: 30px;
+    padding-bottom: 50px;
 }
 
 .form {
@@ -175,4 +187,26 @@ select {
     border-left: 10px solid transparent;
     border-top: 12px solid #8d7f76;
     pointer-events: none;
+}
+
+.form__error-summary {
+    background-color: #fff5f5;
+    border: 1px solid #ffcccc;
+    padding: 20px 30px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.form__error-summary ul {
+    list-style-position: inside;
+    padding: 0;
+    margin: 0;
+}
+
+.form__error-summary li {
+    color: #ff4d4d;
+    font-size: 14px;
+    line-height: 1.6;
+    padding-left: 5px;
 }
