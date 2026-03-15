@@ -33,3 +33,33 @@ body {
 .main {
     padding-top: 15px;
 }
+
+.common__heading h2 {
+    font-family: 'Inika', serif;
+    font-weight: 400;
+    color: #8b7969;
+    letter-spacing: 3px;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+    text-align: center;
+    margin-top: 0;
+}
+
+.form__button {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.form__button-submit {
+    background-color: #8b7969;
+    color: #fff;
+    padding: 15px 40px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    font-size: 20px;
+}
+
+.form__button-submit:hover {
+    opacity: 0.8;
+}

@@ -7,7 +7,7 @@
 @section('content')
 
 <div class="contact-form__content">
-    <div class="contact-form__heading">
+    <div class="common__heading">
         <h2>Contact</h2>
     </div>
 
@@ -29,6 +29,7 @@
 
     <form class="form" action="/confirm" method="post">
         @csrf
+
     {{-- 名前 --}}
         <div class="form__group">
             <div class="form__group-title">
