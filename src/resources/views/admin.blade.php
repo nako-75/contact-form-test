@@ -26,6 +26,7 @@
 
                 <select name="gender" class="search-form__select">
                     <option value="">性別</option>
+                    <option value="0">全て</option>
                     <option value="1">男性</option>
                     <option value="2">女性</option>
                     <option value="3">その他</option>
@@ -51,9 +52,8 @@
     {{-- ツール --}}
     <div class="admin__tools">
         <a href="{{ url('/admin/export?' . http_build_query(request()->query())) }}" class="export-btn">エクスポート</a>
+        {{-- ページネーション --}}
         <div class="pagination">
-            {{-- ページネーション --}}
-            {{ $contacts->links() }}
             {{ $contacts->appends(request()->query())->links() }}
         </div>
     </div>
@@ -105,6 +105,7 @@
                                 </table>
 
                                 <form action="/admin/delete" method="post" class="delete-form">
+                                    @method('DELETE')
                                     @csrf
                                     <input type="hidden" name="id" value="{{ $contact->id }}">
                                     <button type="submit" class="modal__delete-btn">削除</button>

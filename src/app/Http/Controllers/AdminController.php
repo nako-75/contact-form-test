@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Contact;
 use App\Models\Category;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -18,11 +19,17 @@ class AdminController extends Controller
     public function search(Request $request){
         $query = Contact::query();
         if ($request->filled('keyword')){
-            $query->where('last_name', 'like', '%' . $request->keyword . '%')
-                    ->orWhere('first_name', 'like', '%' . $request->keyword . '%')
-                    ->orWhere('email', 'like', '%' . $request->keyword . '%');
+            $keyword = $request->keyword;
+            $keywordClean = str_replace([' ', '　'], '', $keyword);
+            $query->where(function($q) use ($keyword, $keywordClean) {
+            $q->where('last_name', 'like', '%' . $keyword . '%')
+                ->orWhere('first_name', 'like', '%' . $keyword . '%')
+                ->orWhere('email', 'like', '%' . $keyword . '%')
+                ->orWhere(DB::raw('CONCAT(last_name, first_name)'), 'like', '%' . $keywordClean . '%');
+            });
         }
-        if ($request->filled('gender')){
+
+        if ($request->filled('gender') && $request->gender != '0') {
             $query->where('gender', $request->gender);
         }
 
@@ -47,13 +54,17 @@ class AdminController extends Controller
     public function export(Request $request){
         $query = Contact::query();
         if ($request->filled('keyword')){
-            $query->where(function($q) use($request){
-                $q->where('last_name', 'like', '%' . $request->keyword . '%')
-                ->orWhere('first_name', 'like', '%' . $request->keyword . '%')
-                ->orWhere('email', 'like', '%' . $request->keyword . '%');
+        $keyword = $request->keyword;
+        $keywordClean = str_replace([' ', '　'], '', $keyword);
+        $query->where(function($q) use ($keyword, $keywordClean) {
+            $q->where('last_name', 'like', '%' . $keyword . '%')
+                ->orWhere('first_name', 'like', '%' . $keyword . '%')
+                ->orWhere('email', 'like', '%' . $keyword . '%')
+                ->orWhere(DB::raw('CONCAT(last_name, first_name)'), 'like', '%' . $keywordClean . '%');
             });
         }
-        if ($request->filled('gender')) {
+
+        if ($request->filled('gender') && $request->gender != '0') {
             $query->where('gender', $request->gender);
         }
 

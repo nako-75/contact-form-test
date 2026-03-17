@@ -28,4 +28,4 @@ Route::post('/logout', [AuthController::class, 'logout']);
 Route::get('/admin/search', [AdminController::class, 'search']);
 Route::get('/reset', [AdminController::class, 'reset']);
 Route::get('/admin/export', [AdminController::class, 'export']);
-Route::post('/admin/delete', [AdminController::class, 'destroy']);
+Route::delete('/admin/delete', [AdminController::class, 'destroy']);
