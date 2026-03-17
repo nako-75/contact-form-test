@@ -16,7 +16,7 @@
     </div>
 
     <div class="auth-form__inner">
-        <form class="form" action="/register" method="post">
+        <form class="form" action="/register" method="post" novalidate>
             @csrf
 
             {{-- 名前 --}}

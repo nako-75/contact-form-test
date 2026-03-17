@@ -2,6 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/confirm.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 @endsection
 
 @section('content')
@@ -58,6 +59,8 @@
                     <input type="hidden" name="tel_1" value="{{ $contact['tel_1'] }}">
                     <input type="hidden" name="tel_2" value="{{ $contact['tel_2'] }}">
                     <input type="hidden" name="tel_3" value="{{ $contact['tel_3'] }}">
+                </td>
+            </tr>
 
             {{-- 住所 --}}
             <tr class="confirm-table__row">
@@ -109,3 +112,4 @@
         </div>
     </form>
 </div>
+@endsection

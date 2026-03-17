@@ -31,7 +31,7 @@ body {
 }
 
 .main {
-    padding-top: 15px;
+    padding-top: 30px;
 }
 
 .common__heading h2 {
@@ -62,4 +62,11 @@ body {
 
 .form__button-submit:hover {
     opacity: 0.8;
+}
+
+.form__error {
+    color: #ff0000;
+    font-size: 14px;
+    margin-top: 5px;
+    text-align: left;
 }
