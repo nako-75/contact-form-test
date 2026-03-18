@@ -335,21 +335,3 @@
     padding: 10px 40px;
     cursor: pointer;
 }
-
-.alert__success {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 20px;
-    background-color: #efcdcd;
-    color: #e76231;
-    text-align: center;
-    border-radius: 2px;
-    animation: fadeOut 4s forwards;
-}
-
-@keyframes fadeOut {
-    0% { opacity: 0; transform: translateY(-10px); }
-    10% { opacity: 1; transform: translateY(0); }
-    80% { opacity: 1; }
-    100% { opacity: 0; display: none; }
-}

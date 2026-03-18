@@ -108,6 +108,6 @@ class AdminController extends Controller
 
         public function destroy(Request $request){
             Contact::find($request->id)->delete();
-            return redirect('/admin')->with('message', 'お問い合わせを削除しました');
+            return redirect('/admin');
         }
 }

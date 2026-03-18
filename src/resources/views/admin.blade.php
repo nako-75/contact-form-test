@@ -76,7 +76,7 @@
             </tr>
             @foreach($contacts as $contact)
             <tr class="admin__table-row">
-                <td class="admin__table-item">{{ $contact->last_name }}{{ $contact->first_name }}</td>
+                <td class="admin__table-item">{{ $contact->last_name }}　{{ $contact->first_name }}</td>
                 <td class="admin__table-item">
                     @if($contact->gender == 1) 男性
                     @elseif($contact->gender == 2) 女性
@@ -94,7 +94,7 @@
                             <label for="modal-{{ $contact->id }}" class="modal__close">×</label>
                             <div class="modal__content">
                                 <table class="modal__detail-table">
-                                    <tr><th>お名前</th><td>{{ $contact->last_name }}{{ $contact->first_name }}</td></tr>
+                                    <tr><th>お名前</th><td>{{ $contact->last_name }}　{{ $contact->first_name }}</td></tr>
                                     <tr><th>性別</th><td>{{ $contact->gender == 1 ? '男性' : ($contact->gender == 2 ? '女性' : 'その他') }}</td></tr>
                                     <tr><th>メールアドレス</th><td>{{ $contact->email }}</td></tr>
                                     <tr><th>電話番号</th><td>{{ $contact->tel }}</td></tr>
